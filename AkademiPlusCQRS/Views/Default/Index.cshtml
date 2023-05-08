@@ -1,0 +1,36 @@
+﻿@model List<AkademiPlusCQRS.CQRSPattern.Results.GetProductQueryResult>
+@{
+    Layout = null;
+}
+<link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+<div class="container">
+    <br /><br />
+    <table class="table table-bordered">
+        <tr>
+            <th>#</th>
+            <th>Ürün Adı</th>
+            <th>Marka</th>
+            <th>Kategori</th>
+            <th>Stok</th>
+            <th>Fiyat</th>
+            <th>Sil</th>
+            <th>Güncelle</th>
+            <th>Detaylar</th>
+        </tr>
+        @foreach (var x in Model)
+        {
+            <tr>
+                <td>@x.ProductID</td>
+                <td>@x.Name</td>
+                <td>@x.Brand</td>
+                <td>@x.Category</td>
+                <td>@x.Stock</td>
+                <td>@x.Price</td>
+                <td><a href="/Default/DeleteProduct/@x.ProductID" class="btn btn-outline-danger">Sil</a></td>
+                <td><a href="/Default/UpdateProduct/@x.ProductID" class="btn btn-outline-info">Güncelle</a></td>
+                <td><a href="/Default/GetProduct/@x.ProductID" class="btn btn-outline-dark">Detaylar</a></td>
+            </tr>
+        }
+    </table>
+    <a href="/Default/AddProduct" class="btn btn-outline-primary">Yeni Ürün Ekle</a>
+</div>
